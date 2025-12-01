@@ -1,0 +1,35 @@
+ENUNCIADO:
+
+Siga as intruções abaixo:
+
+1) Aprova deverá ser resolvida em Python ou java;
+2) Incluir comentários no seu código, explicando o que a respectiva parte do código faz, om o objetivo de mostrar onde e como você resolveu cada item solicitadonasd questões;
+3) Não serão aceitos programas copiados da Internet;
+4) A interpretação das questões é parte integrante da avaliação;
+5) Crie um arquivo .py e .java para cada questão  e ao final da prova faça um arquivo .zip ou .rar das questões.
+
+## QUESTÃO 1:
+
+Alunos estão se cadastrando para um cuso de programação em Python. Implemente um programa ORIENTADO A OBJETOS que consulte se um CPF está cadastrado. Para que a lista de CPFs dos alunos não vaze na internet, para acessar a lista completa, o usuário deverá forcener senha.
+
+A) Inserir um CPF na fila (apenas os números inteiros)
+B) Listar os CPF da fila (peir senha: redes2025)
+C) Remover um CPF da fila 
+• Crie um menu da seguinte forma:
+1 - Inserir um CPF na fila
+2 - Listar os CPF da fila
+3 - Remover um CPF da fila
+4 - sair
+
+1. No menu 1, chame o método inerirCPF(). que deve armazenar o CPF na fila ou informar que ele já está cadastrado.
+2. No menu 2, chame o método listarCPF(). Que deve validar se a senha confere e mostrar os CPFs que estão na fila em caso positivo ou informar que a senha está incorreta.
+3. No menu 3, chame o método removerCPF(). Excluir o CPF digitado da fila ou informar que ele não existe na fila.
+4. No menu 4, feche o programa.
+
+# Dica 1: Para atributos privados é necessário utilizar os métodos especiais Getters e Setters ou Properties.
+# Dica 2: É interessante perguntar ao usuário o que ele quer fazer, após a escolha do usuário, armazene o valor de CPF em uma variável e depois instancie o objeto do tipo CPF, por exemplo, cpf1.inserirCPF(variável) ou chame o método e passe o valor.
+# Dica 3: Faça comentários no seu código.
+# Dica 4: Inicialize os atributos da classe CPF, por exemplo CPF cpf1;
+cpf1.inserirCPF(999.999.999-99).
+
+# DIca 5: Faça o menu com match e case
