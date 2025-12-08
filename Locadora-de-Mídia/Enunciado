@@ -1,0 +1,107 @@
+Projeto: Locadora de Mídia (POO)
+
+Gerencie clientes, títulos (jogos/filmes/séries), planos, locações e multas. Foque nos pilares de POO, SOLID e design limpo.
+
+Objetivo
+Construir um sistema orientado a objetos que permita cadastrar, consultar, atualizar e listar clientes e títulos; gerenciar locações e devoluções; calcular multas e controlar disponibilidade de mídia conforme plano do cliente.
+
+Escolhi esse tema porque conversa com seu interesse por jogos/serviços (tipo Game Pass), mas sem necessidade de integrar com APIs reais.
+
+
+Escopo Funcional (MVP)
+
+
+Entidades (Domínio)
+
+Pessoa (abstrata): id, nome, email
+Cliente (herda Pessoa): documento (ID único; CPF/ID), plano (Plano), saldoMulta
+Plano: codigo (ID), nome, limiteItensSimultaneos, diasPadraoLocacao, multaPorDia
+Titulo: id (ID), tipo (JOGO/FILME/SERIE), nome, ano, classificacaoIndicativa, disponibilidade (QUANTIDADE em estoque)
+Locacao: id, cliente, titulo, dataLocacao, dataPrevistaDevolucao, dataDevolucao (opcional), valorMulta, status (ATIVA/ENCERRADA/ATRASADA)
+
+
+
+Casos de Uso
+
+Cadastrar/Listar/Consultar Clientes por documento (ID)
+Cadastrar/Listar Planos (definir regras de limite/multa)
+Cadastrar/Listar Títulos (estoque e tipo)
+Realizar locação:
+
+Verificar estoque e limite simultâneo do plano
+Definir data prevista conforme diasPadraoLocacao
+
+
+Registrar devolução:
+
+Calcular multa por atraso: (diasAtraso * multaPorDia do Plano)
+Atualizar estoque e status da locação
+
+
+Relatórios simples:
+
+Locações ativas de um cliente
+Top títulos mais locados
+Saldo de multa acumulado por cliente
+
+
+
+
+
+Validações
+
+IDs/documentos únicos
+Email válido
+Não permitir locação se estoque = 0
+Respeitar limite de itens simultâneos do plano
+Multa somente se dataDevolucao > dataPrevistaDevolucao
+Impedir devolução de locação já encerrada
+
+
+
+Interface (CLI)
+1. Cadastrar Cliente
+2. Consultar Cliente por Documento
+3. Cadastrar Plano
+4. Listar Planos
+5. Cadastrar Título
+6. Listar Títulos
+7. Realizar Locação
+8. Registrar Devolução
+9. Listar Locações (por Cliente / Geral)
+10. Relatórios (Top Títulos / Multas / Ativas)
+0. Sair
+
+
+
+
+Requisitos de POO e Boas Práticas
+
+Encapsulamento: atributos privados; getters/setters somente quando fizer sentido.
+Abstração: Pessoa como base; crie interfaces como Identificavel para padronizar busca por ID.
+Herança/Polimorfismo:
+
+Cliente herda de Pessoa.
+Polimorfismo em operações que aceitam Pessoa.
+
+
+Composição/Agragação:
+
+Locacao compõe relação Cliente–Titulo.
+Cliente agrega Plano.
+
+
+SOLID:
+
+SRP: separar responsabilidades entre repositórios, serviços, validadores e calculadoras de multa.
+OCP: permita novas regras sem alterar código fechado (ex.: novos tipos de plano).
+DIP: dependa de interfaces (ex.: Repositorio<T>).
+
+
+Exceções Personalizadas:
+
+DuplicidadeIdException
+EntidadeNaoEncontradaException
+RegraNegocioException
+EstoqueInsuficienteException
+LimitePlanoExcedidoException
